@@ -5,35 +5,35 @@
   .span3.pull-right
     .settings
       %a{href: settings_project_url(@project.name)} settings
-.row
+.row.project
   .p
     Proyecto
-  .span2
+  .span2.eh
     = t('views.milestones.hours_reporter.estimate_hours')
     = @hours_reporter.project_estimate_hours
-  .span2
+  .span2.ceh
     = t('views.milestones.hours_reporter.client_estimate_hours')
     = @hours_reporter.project_client_estimate_hours
-  .span2
+  .span2.wh
     = t('views.milestones.hours_reporter.worked_hours')
     = @hours_reporter.project_worked_hours
-.row
+.row.milestone
   .p
     Milestone
-  .span2
+  .span2.eh
     = t('views.milestones.hours_reporter.estimate_hours')
     = @hours_reporter.project_current_milestone_estimate_hours
-  .span2
+  .span2.ceh
     = t('views.milestones.hours_reporter.client_estimate_hours')
     = @hours_reporter.project_current_milestone_client_estimate_hours
-  .span2
+  .span2.wh
     = t('views.milestones.hours_reporter.worked_hours')
     = @hours_reporter.project_current_milestone_worked_hours
-.row-fluid
-  .current-milestone.span6
-    %ul#issues
-      - if @project.current_milestone.nil?
-        no current milestone
+.row-fluid#milestones
+  %div#issues
+    %div
+      - if !@project.current_milestone
+        .span6 no current milestone
       - else
         .current-milestone.js-milestone.span6{'data-milestone-number' => "#{@project.current_milestone.number}"}
           %a.accordion-toggle.js-milestone-title= t('views.milestones.loading.title')

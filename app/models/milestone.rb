@@ -5,7 +5,6 @@ class Milestone < ActiveRecord::Base
   validates_presence_of :number
   # validates_presence_of :start_date
   validates_presence_of :due_date
-  # validates_presence_of :estimated_hours
   # validates_presence_of :client_estimated_hours
   # validate :start_must_be_before_due_date
   # validate :estimated_hours_must_be_lower_than_client_estimated_hours
@@ -29,6 +28,10 @@ class Milestone < ActiveRecord::Base
     Issue.where(milestone_number: number)
   end
 
+  def estimated_hours
+    issues.reduce(0) { |sum, issue| coerce(issue.estimated_hours, 0) + sum }
+  end
+
   def does_not_overlap
     project.milestones.where("start_date IS NOT NULL AND due_date IS NOT NULL").each do |milestone|
       unless self.due_date < milestone.start_date || self.start_date > milestone.due_date
@@ -36,5 +39,12 @@ class Milestone < ActiveRecord::Base
       end
     end
   end
+
+  private
+
+    def coerce(first, second)
+      return second if first.nil?
+      first
+    end
   
 end

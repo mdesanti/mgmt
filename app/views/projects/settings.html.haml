@@ -8,8 +8,6 @@
           %br
           = t('views.milestones.settings.start_date')
           = m.date_field :start_date, :class => "js-sd"
-          = t('views.milestones.settings.estimated_hours')
-          = m.number_field :estimated_hours, :class => "js-eh"
           = t('views.milestones.settings.client_estimated_hours')
           = m.number_field :client_estimated_hours, :class => "js-ceh"
     = p.submit t('views.milestones.settings.submit'), :class => 'btn btn-primary'

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130510145102) do
+ActiveRecord::Schema.define(version: 20130607200931) do
 
   create_table "issues", force: true do |t|
     t.string   "status",           default: "not_started"
@@ -31,7 +31,6 @@ ActiveRecord::Schema.define(version: 20130510145102) do
     t.integer  "number"
     t.date     "start_date"
     t.date     "due_date"
-    t.decimal  "estimated_hours"
     t.decimal  "client_estimated_hours"
     t.integer  "project_id"
     t.datetime "created_at"

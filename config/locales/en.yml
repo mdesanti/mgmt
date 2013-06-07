@@ -59,7 +59,6 @@ en:
         title: 'Loading title ...'
       settings:
         start_date: 'Start date'
-        estimated_hours: 'Estimated hours'
         client_estimated_hours: 'Client estimated hours'
         submit: 'Save changes'
       update:

@@ -6,7 +6,7 @@ class HoursReporter < SimpleDelegator
   end
 
   def project_estimate_hours
-    Milestone.where(:project => @project).reduce(0) { |sum, milestone| coerce(milestone.estimated_hours, 0) + sum }
+    Issue.where(:project => @project).reduce(0) { |sum, milestone| coerce(milestone.estimated_hours, 0) + sum }
   end
 
   def project_client_estimate_hours

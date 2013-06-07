@@ -3,8 +3,6 @@ require 'spec_helper'
 describe HoursReporter do
   let!(:user)                                 { create(:user) }
   let!(:project)                              { create(:project) }
-  let!(:project2)                             { create(:project) }
-  let!(:milestone2)                           { create(:milestone, number: 1, start_date: Date.today-2, due_date: Date.today+2, project: project2, estimated_hours: 20) }
   let!(:milestone)                            { create(:milestone, number: 1, start_date: Date.today-2, due_date: Date.today+2, project: project) }
   let!(:current_milestone_issues)             { create_list(:issue, 2, project: project, milestone_number: milestone.number, status: 'not_started')}
   let!(:no_milestone_issues)                  { create_list(:issue, 2, project: project, milestone_number: nil, status: 'not_started')}
@@ -16,7 +14,7 @@ describe HoursReporter do
   describe "#project_estimate_hours" do
 
     it "shows the correct amount of estimate hours for the project" do
-      expect(reporter.project_estimate_hours).to eq(9.99)
+      expect(reporter.project_estimate_hours).to eq(20)
     end
 
   end
@@ -40,7 +38,7 @@ describe HoursReporter do
   describe "#project_current_milestone_estimate_hours" do
 
     it "shows the correct amount of estimated hours for the current milestone" do
-      expect(reporter.project_current_milestone_estimate_hours).to eq(9.99)
+      expect(reporter.project_current_milestone_estimate_hours).to eq(10)
     end
 
   end
@@ -48,7 +46,7 @@ describe HoursReporter do
   describe "#project_current_milestone_client_estimate_hours" do
 
     it "shows the correct amount of client estimated hours for the current milestone" do
-      expect(reporter.project_current_milestone_estimate_hours).to eq(9.99)
+      expect(reporter.project_current_milestone_client_estimate_hours).to eq(9.99)
     end
 
   end
