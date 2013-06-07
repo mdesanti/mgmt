@@ -50,6 +50,11 @@ en:
         title: 'Loading title ...'
 
     milestones:
+      hours_reporter:
+        estimate_hours: 'EH:'
+        client_estimate_hours: 'CEH:'
+        worked_hours: 'WH:'
+
       loading:
         title: 'Loading title ...'
       settings:

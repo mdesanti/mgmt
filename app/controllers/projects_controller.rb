@@ -17,6 +17,8 @@ class ProjectsController < ApplicationController
         subscribe_to_events: Rails.application.config.github.subscribe_to_events
       }).create
     end
+
+    @hours_reporter = HoursReporter.new(@project)
   end
 
   def settings

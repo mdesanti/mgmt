@@ -1,6 +1,34 @@
-%h1.capitalize
-  = @project.name
-  %a{href: settings_project_url(@project.name)} settings
+.row
+  .span6
+    %h1.capitalize
+      = @project.name
+  .span3.pull-right
+    .settings
+      %a{href: settings_project_url(@project.name)} settings
+.row
+  .p
+    Proyecto
+  .span2
+    = t('views.milestones.hours_reporter.estimate_hours')
+    = @hours_reporter.project_estimate_hours
+  .span2
+    = t('views.milestones.hours_reporter.client_estimate_hours')
+    = @hours_reporter.project_client_estimate_hours
+  .span2
+    = t('views.milestones.hours_reporter.worked_hours')
+    = @hours_reporter.project_worked_hours
+.row
+  .p
+    Milestone
+  .span2
+    = t('views.milestones.hours_reporter.estimate_hours')
+    = @hours_reporter.project_current_milestone_estimate_hours
+  .span2
+    = t('views.milestones.hours_reporter.client_estimate_hours')
+    = @hours_reporter.project_current_milestone_client_estimate_hours
+  .span2
+    = t('views.milestones.hours_reporter.worked_hours')
+    = @hours_reporter.project_current_milestone_worked_hours
 .row-fluid
   .current-milestone.span6
     %ul#issues
